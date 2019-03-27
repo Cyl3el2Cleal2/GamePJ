@@ -1,0 +1,51 @@
+/* เอาโค้ด .login ไป ใส่ของตัวเอง เปลี่ยน bg เอา*/
+.login {
+     background-image: url(./img/bg2.gif); /*เปลี่ยน bg*/
+     background-repeat: no-repeat;
+    background-size: 100% 100%;
+    object-fit: contain;
+    position: relative;
+    width: 100%;
+    padding-top: 56.25%; /* 16:9 Aspect Ratio */
+    max-width: 85%;
+   
+ }
+ .frame{
+     max-height: 80%;
+     padding-left: 15%;
+     background-color: black;
+ }
+
+#bdTime{
+  border: 15px solid transparent;
+  padding: 15px;
+  
+  border-image: url(./img/bdTime1.gif) 33% round;
+  
+}
+.timeleft{
+  color: white;
+  text-align: right;
+  position: absolute;
+  top: 8px;
+  right: 16px;
+  
+ 
+}
+/*******************************/
+
+.pang1{
+  background-image: url(./img/bg3.jpg); 
+     background-repeat: no-repeat;
+  background-size: 100% 100%;
+    object-fit: contain;
+    position: relative;
+    width: 100%;
+    padding-top: 56.25%; /* 16:9 Aspect Ratio */
+    max-width: 85%;
+   
+}
+
+body{
+  background-color: black;
+}
