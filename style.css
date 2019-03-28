@@ -22,9 +22,7 @@
 #bdTime {
     border: 15px solid transparent;
     padding: 15px;
-
     border-image: url(./img/bdTime1.gif) 33% round;
-
 }
 
 .timeleft {
@@ -33,14 +31,12 @@
     position: absolute;
     top: 8px;
     right: 16px;
-
-
 }
 
 /*******************************/
 
 .pang1 {
-    background-image: url(./img/bg3.jpg);
+    /* background-image: url(./img/bg3.jpg); */
     background-repeat: no-repeat;
     background-size: 100% 100%;
     object-fit: contain;
@@ -51,7 +47,17 @@
     max-width: 85%;
 
 }
+canvas{
+    margin-left: auto;
+}
+
+#gameArea{
+    position:relative;
+    width: 1600px;
+    margin: 0px auto;
+}
+
 
 body {
-    background-color: black;
+    background-color: green;
 }
