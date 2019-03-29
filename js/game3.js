@@ -5,18 +5,15 @@ var ctx;
 var width;
 var imgCos;
 var key, pos = 0;
+var div;
+var indexofMath = 0;
 function CreateScene() {
     canvas = document.getElementById('scene');
-
     canvas.width = 1600;
     canvas.height = 900;
-
     canvas.style.border = "3px solid";
-
     ctx = canvas.getContext('2d')
     ctx.moveTo(0, 0);
-
-
     ctx.stroke();
     startTimer();
     document.getElementById("Modal").style.display = "none";
@@ -59,7 +56,7 @@ function custom() {
         canvas.width = canvas.width
 
 
-        console.log(width)
+        console.log(Math.floor(width))
         console.log(canvas.width - 200)
         if (width > canvas.width - 200) {
             width = canvas.width - 200;
@@ -67,52 +64,82 @@ function custom() {
             width = 0;
         }
 
-        ctx.drawImage(imgCos, width, canvas.height * (4 / 5) - 80, 200, 200);
+        ctx.drawImage(imgCos, Math.floor(width), canvas.height * (4 / 5) - 80, 200, 200);
 
+        console.log(document.getElementById(div).offsetWidth)
     }, 5);
 }
 
 
 function MathTitle() {
-    var i = 0;
     var opUsing = ["(2*3)+2-(10/2)", "(20/3)+(2*11)-10", "4+2-(4*8)/3", "(4/2)-(8-2)+35", "10-(((2*8)/3)+9)"];
+    var query = location.search.substring(1);
+    console.log(query)
+    if (query > 0) {
+        indexofMath = query
+        
+        var res = opUsing[query]
 
-
-
-   var res = opUsing[i]
+        document.getElementById("MathN0").innerHTML = opUsing[query] + " = ?";
+       MathAnswer(Math.floor(eval(res)));
+    } else {
+        
+        var res = opUsing[indexofMath]
+        document.getElementById("MathN0").innerHTML = opUsing[indexofMath] + " = ?";
+        MathAnswer(Math.floor(eval(res)));
+    }
    
-
-    
-  
-    document.getElementById("MathN0").innerHTML = opUsing[i] + " = ?";
-    MathAnswer(eval(res));
 }
 function MathAnswer(res) {
 
-    var b = [1,2,3]
-    var i =0;
-    document.getElementById("MathN"+b[i]).innerHTML = res;
-    document.getElementById("MathN"+b[i+1]).innerHTML = Math.floor(Math.random() * 100);
-    document.getElementById("MathN"+b[i+2]).innerHTML = Math.floor(Math.random() * 100);
-    
+    var b = [1, 2, 3]
+    var i = 0;
+    div = "MathN" + b[i];
+    document.getElementById("MathN" + b[i]).innerHTML = res;
+    document.getElementById("MathN" + b[i + 1]).innerHTML = Math.floor(Math.random() * 100);
+    document.getElementById("MathN" + b[i + 2]).innerHTML = Math.floor(Math.random() * 100);
+
 }
 
 function GameOver() {
-    var image = ["./img/customGame3/bomb.png"];
-    ctx = canvas.getContext('2d')
-    var imgBomb = new Image()
-    imgBomb.src = image[0];
-    console.log(image[0])
-    imgBomb.onload = function () {
 
-        ctx.drawImage(imgBomb, width, canvas.height * (4 / 5) - 150, 400, 400)
+    if (Math.floor(width) > document.getElementById(div).offsetWidth) {
+
+        var image = ["./img/customGame3/bomb.png"];
+        ctx = canvas.getContext('2d')
+        var imgBomb = new Image()
+        imgBomb.src = image[0];
+        console.log(image[0])
+        imgBomb.onload = function () {
+
+            ctx.drawImage(imgBomb, width, canvas.height * (4 / 5) - 150, 400, 400)
+        }
+        document.onkeydown = function (e) {
+            return false;
+        }
+        document.getElementById("Modal").style.display = "block";
+    } else {
+        document.onkeydown = function (e) {
+            return false;
+        }
+        document.getElementById("Modal").style.display = "block";
+        document.getElementById("GO").innerHTML = "WIN";
+        document.getElementById("PA").innerHTML = "NEXT";
+        document.getElementById("PA").style.backgroundColor = "#281785bb";
+        document.getElementById("Modal").style.backgroundColor = "rgba(44, 179, 17, 0.651)";
     }
-    document.onkeydown = function (e) {
-        return false;
+
+
+
+}
+function nextPage() {
+    var elem = document.getElementById("PA");
+    var txt = elem.textContent || elem.innerText;
+    if (txt == "NEXT") {
+        indexofMath += 1;
+
+        window.location.href = "game3.html?" + indexofMath
     }
-    document.getElementById("Modal").style.display = "block";
-
-
 }
 function startTimer() {
     clock = setInterval(updateTimer, 1000)
