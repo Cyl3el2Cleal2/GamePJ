@@ -102,4 +102,13 @@ body {
     padding: 15px;
 
 }
+.gameArea3{
+    position:relative;
+    width: 1600px;
+    margin: 0px auto;
+    background-image: url("./img/customGame3/bg3.jpg");
+    background-position: center;
+  background-repeat: no-repeat;
+  background-size: 1600px 900px;
+}
 
