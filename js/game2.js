@@ -1,17 +1,40 @@
 
 var canvas;
-var timer = 10;
+var timer = 60;
 var clock;
 var slide;
 var ctx;
-var current = 800;
-
+var current = 500;
+var anwser;
+var textOut;
+var temp;
+var number;
+var tempNumber;
+var point = 0;
 
 window.addEventListener('keydown', this.check, false);
 
 function check(e) {
-    console.log(e.keyCode)
+    //console.log(e.keyCode)
     if (parseInt(e.keyCode) >= 48 && parseInt(e.keyCode) <= 57) {
+        number = e.keyCode - 48;
+        //console.log(number)
+        if (anwser > 9) {
+            if (tempNumber != 0) {
+                updateGame(tempNumber * 10 + number)
+            } else {
+                tempNumber = number
+                return
+            }
+
+
+
+        } else {
+            updateGame(number);
+        }
+        tempNumber = 0
+
+
 
     } else {
         alert('กดตัวเลขเท่านั้น')
@@ -30,15 +53,54 @@ function createArea() {
     startTimer();
     createBomb();
     slideBar();
-    testSegment()
+    drawBoard();
+    runGame();
 }
-function testSegment() {
-    ctx.font = '30px sans-serif';
-    ctx.fillText("Hello World", 30, 30)
-}
-function updateGame() {
-    loadSlidebar();
 
+function checkAnswer(num) {
+    //console.log("check this"+num+" : "+anwser)
+    if (parseInt(num) == parseInt(anwser)) {
+        point = 100
+    }
+
+}
+
+function drawBoard() {
+    ctx.fillStyle = "#008000"
+    ctx.fillRect(500, 200, 600, 130);
+}
+
+
+
+function runGame() {
+    
+    textOut = ""
+    anwser = Math.round(Math.random() * 9)
+    const op = Math.random()
+    if (op < 0.5) {
+        var x = anwser
+        var y = Math.round(Math.random() * 9)
+        anwser = x * y
+        textOut = x + " x " + y + " = ?"
+
+    } else {
+        var y = Math.round(Math.random() * 9);
+        var x = anwser * y
+        textOut = x + " / " + y + " = ?"
+    }
+    console.log(anwser)
+    ctx.font = 'bold 110px sans-serif';
+    ctx.fillStyle = "#FF1493"
+    ctx.fillText(textOut, 600, 300)
+    temp = ctx
+}
+function updateGame(input) {
+    checkAnswer(input)
+    drawBoard()
+    runGame()
+    
+    
+    
 }
 function slideBar() {
     var img = new Image()
@@ -55,8 +117,8 @@ function slideBar() {
     ctx.stroke();
 }
 function loadSlidebar() {
-    ctx.clearRect(351, 801, current + 4, 28)
-    if (current >= 1250 || current <= 0) {
+    ctx.clearRect(351, 801, current + 1, 28)
+    if (current >= 900 || current <= 0) {
         stopTimer()
     }
     var grd = ctx.createLinearGradient(0, 0, 1250, 0);
@@ -64,10 +126,19 @@ function loadSlidebar() {
     grd.addColorStop(1, "yellow");
     // Fill with gradient
     ctx.fillStyle = grd;
+    if (current > 900){
+        stopTimer()
+        ctx.fillRect(351, 801, 900, 28);
+        return
+    }
     ctx.fillRect(351, 801, current, 28);
     ctx.restore();
-
-    current -= 4;
+    console.log('I \'m point'+point)
+    if(point > 0){
+        current+= point
+        point = 0
+    }
+    current -= 1;
 
 }
 
@@ -89,7 +160,7 @@ function createBomb() {
 
 }
 function startTimer() {
-    slide = setInterval(loadSlidebar, 200)
+    slide = setInterval(loadSlidebar, 50)
     clock = setInterval(updateTimer, 1000)
 }
 
@@ -105,7 +176,7 @@ function updateTimer() {
     }
     timer = parseInt(timer, 10) - 1;
 
-    console.log(timer)
+    //console.log(timer)
     document.getElementById('bdTime').innerHTML = "Time left: " + timer;
     if (timer < 10) {
         if (timer % 2 == 0) {
