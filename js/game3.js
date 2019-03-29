@@ -2,9 +2,9 @@ var canvas;
 var timer = 20;
 var clock;
 var ctx;
-
+var width;
 var imgCos;
-var key,pos=0;
+var key, pos = 0;
 function CreateScene() {
     canvas = document.getElementById('scene');
 
@@ -19,19 +19,19 @@ function CreateScene() {
 
     ctx.stroke();
     startTimer();
-    ctx.stroke();
+    document.getElementById("Modal").style.display = "none";
     custom();
-    startTimer();
+    MathTitle();
 
     // // setBg();
 
 }
 
 function custom() {
-  
-    var image = ["./img/customGame3/W1.png"];
+
+    var image = ["./img/customGame3/W1.png", "./img/customGame3/W2.png"];
     ctx = canvas.getContext('2d')
-    var width = canvas.width * (1 / 3) + 200
+    width = canvas.width * (1 / 3) + 200
     imgCos = new Image()
     console.log(width)
     imgCos.src = image[0];
@@ -44,36 +44,76 @@ function custom() {
     }
     document.onkeyup = function (e) { pos = 0; }
     setInterval(function () {
-        
+
         if (pos == 0) return;
-        if (key == 37) width -= 10;
-       
-        if (key == 39) width += 10;  
+        if (key == 37) {
+            imgCos.src = image[0];
+            width -= 5;
+        }
+
+
+        if (key == 39) {
+            imgCos.src = image[1];
+            width += 5;
+        }
         canvas.width = canvas.width
-        ctx.drawImage(imgCos, width, canvas.height * (4 / 5) - 100,200, 200);
-    
+
+
+        console.log(width)
+        console.log(canvas.width - 200)
+        if (width > canvas.width - 200) {
+            width = canvas.width - 200;
+        } else if (width < 0) {
+            width = 0;
+        }
+
+        ctx.drawImage(imgCos, width, canvas.height * (4 / 5) - 80, 200, 200);
+
     }, 5);
 }
 
-function setBg() {
-    ctx = canvas.getContext('2d')
-    var img = new Image()
-    img.src = "./img/bg3.jpg";
 
-    img.onload = function () {
-
-        ctx.drawImage(img, 0, 0, canvas.width, canvas.height)
-
-    }
-}
 function MathTitle() {
+    var i = 0;
+    var opUsing = ["(2*3)+2-(10/2)", "(20/3)+(2*11)-10", "4+2-(4*8)/3", "(4/2)-(8-2)+35", "10-(((2*8)/3)+9)"];
+
+
+
+   var res = opUsing[i]
+   
+
+    
+  
+    document.getElementById("MathN0").innerHTML = opUsing[i] + " = ?";
+    MathAnswer(eval(res));
+}
+function MathAnswer(res) {
+
+    var b = [1,2,3]
+    var i =0;
+    document.getElementById("MathN"+b[i]).innerHTML = res;
+    document.getElementById("MathN"+b[i+1]).innerHTML = Math.floor(Math.random() * 100);
+    document.getElementById("MathN"+b[i+2]).innerHTML = Math.floor(Math.random() * 100);
+    
+}
+
+function GameOver() {
+    var image = ["./img/customGame3/bomb.png"];
+    ctx = canvas.getContext('2d')
+    var imgBomb = new Image()
+    imgBomb.src = image[0];
+    console.log(image[0])
+    imgBomb.onload = function () {
+
+        ctx.drawImage(imgBomb, width, canvas.height * (4 / 5) - 150, 400, 400)
+    }
+    document.onkeydown = function (e) {
+        return false;
+    }
+    document.getElementById("Modal").style.display = "block";
+
 
 }
-function MathAnswer() {
-
-}
-
-
 function startTimer() {
     clock = setInterval(updateTimer, 1000)
 }
@@ -85,6 +125,7 @@ function updateTimer() {
 
     if (timer == 0) {
         stopTimer()
+        GameOver();
         return;
     }
     timer = parseInt(timer, 10) - 1;

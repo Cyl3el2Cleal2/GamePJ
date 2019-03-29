@@ -6,9 +6,11 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="./js/game3.js"></script>
     <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="https://unpkg.com/konva@3.2.3/konva.min.js"></script>
+    <script src="https://unpkg.com/gifler@0.1.0/gifler.min.js"></script>
     <title>Document</title>
 </head>
-<body onload="CreateScene()" onkeyup="updateMove(event)">
+<body onload="CreateScene()">
     <div class="gameArea3">
         <div class="timeleft3">
             <h1 id="bdTime"> Time</h1>
@@ -18,13 +20,32 @@
             
         </div>
         <div class="Math3">
-            <h1 class="MathLabel" id="MathN1"> 22 / 20 + 10 = ?</h1>
+            <h1 class="MathLabel" id="MathN0"> 22 / 20 + 10 = ?</h1>
            
             
         </div>
-        <canvas  id="scene">
+        <div class="MathAnw1">
+            <h1 class="MathLabel" id="MathN1">2</h1>
+           
+            
+        </div>
+        <div class="MathAnw2">
+            <h1 class="MathLabel" id="MathN2">4</h1>
+           
+            
+        </div>
+        <div class="MathAnw3">
+            <h1 class="MathLabel" id="MathN3">6</h1>
+           
+            
+        </div>
+        <div id="Modal" class="model3">                 
+                  <p>GAME OVER</p>
+                  <a href="game3.html" class="button3">Play Agian</a>
+        </div>
+        <canvas  id="scene"></canvas>
+     
               
-        </canvas>
     </div>
    
 </body>
