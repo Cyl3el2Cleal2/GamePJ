@@ -62,6 +62,7 @@ body {
     background-color: rgb(65, 65, 65);
 }
 
+
 /* The Modal (background) */
 .modal {
   display: none; /* Hidden by default */
@@ -78,11 +79,17 @@ body {
 
 /* Modal Content */
 .modal-content {
-  background-color: #fefefe;
+  background-color: #32adff;
   margin: auto;
   padding: 20px;
-  border: 1px solid #888;
-  width: 80%;
+  border: 3px solid #FF7F50;
+  width: 50%;
+  text-align: center;
+}
+
+#closeBtn{
+width: 100px;
+height: 80px;
 }
 
 /*************************************************/

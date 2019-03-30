@@ -7,8 +7,13 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" type="text/css" href="style.css">
     <script src="./js/game2.js"></script>
-    <title>Document</title>
+    <title>Bomber Man</title>
     <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.5.10/webfont.js"></script>
+    <style>
+        #gameArea{
+            background: url("./img/smokewall.jpg")
+        }
+    </style>
 </head>
 
 <body onload="createArea()">
@@ -17,16 +22,29 @@
         <!-- Modal content -->
         <div class="modal-content">
             <h2 id="modalText"></h2>
-            <button id="" </div> </div> <div id="gameArea">
+            <button id="closeBtn"></button>
         </div>
     </div>
+    <div id="gameArea">
         <div class="timeleft">
             <h1 id="bdTime"> Time</h1>
 
         </div>
         <canvas id="tutorial">
+            <div id="myModal" class="modal">
+
+                <!-- Modal content -->
+                <div class="modal-content">
+                    <h2 id="modalText"></h2>
+                    <button id="" </div> </div> <div id="gameArea">
+                </div>
+            </div>
 
         </canvas>
+    </div>
+
+
+
 
 </body>
 

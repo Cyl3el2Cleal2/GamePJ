@@ -14,6 +14,13 @@ var point = 0;
 var endGame = 0;
 var closeBtn;
 var myModal;
+var userName;
+var score;
+var correctSound;
+var wrongSound;
+var loseSound;
+var winSound;
+var music;
 
 window.addEventListener('keydown', this.check, false);
 
@@ -33,7 +40,7 @@ function check(e) {
 
 
         } else {
-            if(endGame == 0)
+            if (endGame == 0)
                 updateGame(number);
         }
         tempNumber = 0
@@ -44,6 +51,15 @@ function check(e) {
         alert('กดตัวเลขเท่านั้น')
     }
 }
+
+function initSound() {
+    correctSound = new Audio('./sound/game2/correct.wav');
+    wrongSound = new Audio('./sound/game2/wrong.wav');
+    loseSound = new Audio('./sound/game2/boom.wav');
+    winSound = new Audio('./sound/game2/win.wav');
+    music = new Audio('./sound/game2/music.ogg');
+    music.play();
+}
 function createArea() {
     canvas = document.getElementById('tutorial');
     if (canvas.getContext) {
@@ -53,7 +69,7 @@ function createArea() {
     canvas.height = 900;
     canvas.style.border = "3px solid";
     ctx = canvas.getContext('2d')
-
+    initSound();
     initModal();
     startTimer();
     createBomb();
@@ -62,18 +78,44 @@ function createArea() {
     runGame();
 }
 
-function initModal(){
+function initModal() {
     myModal = document.getElementById('myModal')
+    closeBtn = document.getElementById('closeBtn')
 }
 
-function showModal(){
-    myModal.style.display ="block";
+function showModal() {
+    textOut = document.getElementById('modalText')
+    if(endGame == 1){
+        textOut.innerHTML = "ยินดีด้วย คุณได้ไปด่านต่อไป";
+        closeBtn.value = "เล่นต่อ";
+        closeBtn.onclick = function () {
+            location.href = "./game3.html";
+        };
+    }else if(endGame == -1){
+        textOut.innerHTML = "เสียใจด้วย เวลาหมดแล้ว";
+        closeBtn.value = "เริ่มใหม่";
+        closeBtn.onclick = function () {
+            location.href = "./game1.html";
+        };
+
+    }else{
+        textOut.innerHTML = "เสียใจด้วย ระเบิดทำงานแล้ว ลองใหม่นะ";
+        closeBtn.value = "เริ่มใหม่";
+        closeBtn.onclick = function () {
+            location.href = "./game1.html";
+        };
+    }
+    myModal.style.display = "block";
 }
 
 function checkAnswer(num) {
     //console.log("check this"+num+" : "+anwser)
     if (parseInt(num) == parseInt(anwser)) {
         point = 100
+        correctSound.play();
+
+    }else{
+        wrongSound.play();
     }
 
 }
@@ -86,7 +128,7 @@ function drawBoard() {
 
 
 function runGame() {
-    
+
     textOut = ""
     anwser = Math.round(Math.random() * 9)
     const op = Math.random()
@@ -98,7 +140,7 @@ function runGame() {
 
     } else {
         var y = Math.round(Math.random() * 9);
-        if (y==0)
+        if (y == 0)
             y++;
         var x = anwser * y
         textOut = x + " ÷ " + y + " = ?"
@@ -113,9 +155,9 @@ function updateGame(input) {
     checkAnswer(input)
     drawBoard()
     runGame()
-    
-    
-    
+
+
+
 }
 function slideBar() {
     var img = new Image()
@@ -141,16 +183,16 @@ function loadSlidebar() {
     grd.addColorStop(1, "yellow");
     // Fill with gradient
     ctx.fillStyle = grd;
-    if (current > 900){
+    if (current > 900) {
         stopTimer()
         ctx.fillRect(351, 801, 900, 28);
         return
     }
     ctx.fillRect(351, 801, current, 28);
     ctx.restore();
-    console.log('I \'m point'+point)
-    if(point > 0){
-        current+= point
+    console.log('I \'m point' + point)
+    if (point > 0) {
+        current += point
         point = 0
     }
     current -= 1;
@@ -177,17 +219,30 @@ function createBomb() {
 function startTimer() {
     slide = setInterval(loadSlidebar, 50)
     clock = setInterval(updateTimer, 1000)
+    
 }
 
 function stopTimer() {
-    endGame+=1;
+
     clearInterval(clock)
     clearInterval(slide)
+    if (current > 0 && timer > 0) {
+        endGame = 1;
+        winSound.play();
+    }
+    else {
+        loseSound.play();
+        if(timer < 0){
+            endGame = -1;
+        }else{
+            endGame = -2;
+        }
+    }
     showModal();
 }
 
 function updateTimer() {
-    if (timer == 22222) {
+    if (timer == 0) {
         stopTimer()
         return;
     }
