@@ -11,6 +11,9 @@ var temp;
 var number;
 var tempNumber;
 var point = 0;
+var endGame = 0;
+var closeBtn;
+var myModal;
 
 window.addEventListener('keydown', this.check, false);
 
@@ -30,7 +33,8 @@ function check(e) {
 
 
         } else {
-            updateGame(number);
+            if(endGame == 0)
+                updateGame(number);
         }
         tempNumber = 0
 
@@ -50,11 +54,20 @@ function createArea() {
     canvas.style.border = "3px solid";
     ctx = canvas.getContext('2d')
 
+    initModal();
     startTimer();
     createBomb();
     slideBar();
     drawBoard();
     runGame();
+}
+
+function initModal(){
+    myModal = document.getElementById('myModal')
+}
+
+function showModal(){
+    myModal.style.display ="block";
 }
 
 function checkAnswer(num) {
@@ -85,13 +98,15 @@ function runGame() {
 
     } else {
         var y = Math.round(Math.random() * 9);
+        if (y==0)
+            y++;
         var x = anwser * y
-        textOut = x + " / " + y + " = ?"
+        textOut = x + " ÷ " + y + " = ?"
     }
     console.log(anwser)
     ctx.font = 'bold 110px sans-serif';
     ctx.fillStyle = "#FF1493"
-    ctx.fillText(textOut, 600, 300)
+    ctx.fillText(textOut, 540, 300)
     temp = ctx
 }
 function updateGame(input) {
@@ -165,8 +180,10 @@ function startTimer() {
 }
 
 function stopTimer() {
+    endGame+=1;
     clearInterval(clock)
     clearInterval(slide)
+    showModal();
 }
 
 function updateTimer() {
