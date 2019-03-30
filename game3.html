@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,43 +11,66 @@
     <script src="https://unpkg.com/gifler@0.1.0/gifler.min.js"></script>
     <title>Document</title>
 </head>
-<body onload="CreateScene()" >
+
+<body onload="CreateScene()">
     <div class="gameArea3">
         <div class="timeleft3">
             <h1 id="bdTime"> Time</h1>
         </div>
         <div class="level">
             <h1 class="levelLabel" id="Level">Level 1</h1>
-            
+
         </div>
         <div class="Math3">
             <h1 class="MathLabel" id="MathN0"> 22 / 20 + 10 = ?</h1>
-           
-            
+
+
         </div>
         <div class="MathAnw1" id="MathN1">
-           
-           
-            
+
+
+
         </div>
-        <div class="MathAnw2"  id="MathN2">
-       
-           
-            
+        <div class="MathAnw2" id="MathN2">
+
+
+
         </div>
         <div class="MathAnw3" id="MathN3">
-           
-           
-            
+
+
+
         </div>
-        <div id="Modal" class="model3">                 
-                  <p id="GO">GAME OVER</p>
-                  <a onclick="nextPage()" class="button3" id="PA"></a>
+
+        <!-- <audio autoplay id="bgS" src="./img/customGame3/sound.ogg" autoplay="true"></audio> -->
+
+
+        <div id="Modal" class="model3">
+            <p id="GO">GAME OVER</p>
+            <a onclick="nextPage()" class="button3" id="PA"></a>
         </div>
-        <canvas  id="scene"></canvas>
-     
-              
+
+
+        <canvas id="scene"></canvas>
+
     </div>
-   
+    <script>
+        // function playAudio() {
+        //     console.log("Play")
+        //     var x = document.getElementById("bgS");
+          
+               
+        //             x.play();
+               
+            
+            
+        // }
+
+        // function pauseAudio() {
+        //     var x = document.getElementById("bgS");
+        //     x.pause();
+        // } 
+    </script>
 </body>
+
 </html>

@@ -9,7 +9,13 @@ var div;
 var indexofMath = 0;
 var xW =0;
 var yW =0;
+var score;
+var name ;
+var data ;
 function CreateScene() {
+    name = location.search.substring(1)
+    data = name.split("%20")
+    console.log(data[0] + " " +data[1])
     canvas = document.getElementById('scene');
     canvas.width = 1600;
     canvas.height = 900;
@@ -21,7 +27,11 @@ function CreateScene() {
     document.getElementById("Modal").style.display = "none";
     custom();
     MathTitle();
+    playSound();
+   
+
 }
+
 
 function custom() {
     var image = ["./img/customGame3/1.png", "./img/customGame3/b1.png", "./img/customGame3/2.png", "./img/customGame3/b2.png"
@@ -55,7 +65,7 @@ function custom() {
                 width -= 5;
             }
         }
-        if (key == 39) {            
+      else if (key == 39) {            
             xW = xW+2;           
             if(xW%2==0  ){
                 if(xW==12){
@@ -65,6 +75,9 @@ function custom() {
                 ctx.drawImage(imgCos, Math.floor(width), canvas.height * (4 / 5) - 80, 200, 200);  
                 width += 5;
             }        
+        }else{
+           
+            return;
         }
         canvas.width = canvas.width
         if (width > canvas.width - 200) {
@@ -77,7 +90,9 @@ function custom() {
 
 function MathTitle() {
     var opUsing = ["(2*3)+2-(10/2)", "(20/5)+(2*11)-10", "4+2-(4*8)/3", "(4/2)-(8-2)+35", "10-(((2*8)/3)+9)"];
-    var query = parseInt(location.search.substring(1), 10);
+    var q = location.search.substring(1);
+    var nums = q.split("%20")
+    var query = parseInt(nums[2], 10);
     if (query == null) {
         document.getElementById("Level").innerHTML = "Level " + 1
     }
@@ -182,15 +197,31 @@ function nextPage() {
         indexofMath = indexofMath + 1;
         parseInt(indexofMath, 10);
         if (parseInt(indexofMath, 10) > 4) {
-            window.location.href = "congrat.html"
+            document.getElementById("Modal").style.display = "block";
+            document.getElementById("GO").innerHTML = "ชนะ";
+            document.getElementById("PA").innerHTML = "ยินดีด้วย คุณได้ 50 คะแนนเต็ม";
+            document.getElementById("PA").style.backgroundColor = "#281785bb";
+            document.getElementById("Modal").style.backgroundColor = "rgba(44, 179, 17, 0.651)";
+            var so = parseInt(data[1])
+            so = so+50
+            window.location.href = "congrat.html?"+data[0]+" "+so
         } else {
-            window.location.href = "game3.html?" + indexofMath
+            window.location.href = "game3.html?" +data[0]+" "+data[1]+" "+indexofMath
         }
 
     } else {
-        window.location.href = "game3.html"
+        window.location.href = "game3.html?"+data[0]+" "+data[1]
     }
 }
+
+function playSound() {
+    var sound = new Audio('./img/customGame3/sound2.ogg')
+    
+
+    sound.play();
+   
+}
+
 function startTimer() {
     clock = setInterval(updateTimer, 1000)
 }
@@ -198,13 +229,14 @@ function stopTimer() {
     clearInterval(clock)
 }
 function updateTimer() {
-    if (timer == 15) {
+    if (timer == 0) {
         stopTimer()
         GameOver();
         return;
     }
     timer = parseInt(timer, 10) - 1;
     document.getElementById('bdTime').innerHTML = "Time : " + timer;
+    
     if (timer < 10) {
         if (timer % 2 == 0) {
             document.getElementById('bdTime').style.color = "red";
@@ -214,3 +246,5 @@ function updateTimer() {
         }
     }
 }
+
+
