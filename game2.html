@@ -10,19 +10,24 @@
     <title>Bomber Man</title>
     <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.5.10/webfont.js"></script>
     <style>
-        #gameArea{
-            background: url("./img/smokewall.jpg")
+        #gameArea {
+            background: url("./img/wall2.gif") no-repeat center center;
+            background-size:     cover; 
         }
     </style>
 </head>
 
 <body onload="createArea()">
+    <embed name="GoodEnough" src="sound/game2/music.mp3" loop="false" hidden="true" autostart="true">
     <div id="myModal" class="modal">
 
         <!-- Modal content -->
         <div class="modal-content">
-            <h2 id="modalText"></h2>
-            <button id="closeBtn"></button>
+            <h1 id="modalText"></h1>
+            <h2 id="modalSub"></h2>
+            <button id="closeBtn">
+                <h2 id="textBtn"></h2>
+            </button>
         </div>
     </div>
     <div id="gameArea">

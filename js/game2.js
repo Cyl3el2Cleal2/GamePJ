@@ -9,27 +9,28 @@ var anwser;
 var textOut;
 var temp;
 var number;
-var tempNumber;
+var tempNumber = 0;
 var point = 0;
 var endGame = 0;
 var closeBtn;
 var myModal;
 var userName;
-var score;
 var correctSound;
 var wrongSound;
 var loseSound;
 var winSound;
 var music;
-
+var textBtn;
+var numFail = 1.00;
 window.addEventListener('keydown', this.check, false);
 
 function check(e) {
     //console.log(e.keyCode)
     if (parseInt(e.keyCode) >= 48 && parseInt(e.keyCode) <= 57) {
         number = e.keyCode - 48;
-        //console.log(number)
+        // console.log(anwser);
         if (anwser > 9) {
+
             if (tempNumber != 0) {
                 updateGame(tempNumber * 10 + number)
             } else {
@@ -52,13 +53,21 @@ function check(e) {
     }
 }
 
+function startGame() {
+    slideBar();
+    drawBoard();
+    runGame();
+    startTimer();
+}
+
 function initSound() {
     correctSound = new Audio('./sound/game2/correct.wav');
     wrongSound = new Audio('./sound/game2/wrong.wav');
     loseSound = new Audio('./sound/game2/boom.wav');
     winSound = new Audio('./sound/game2/win.wav');
-    music = new Audio('./sound/game2/music.ogg');
-    music.play();
+    //music = new Audio('./sound/game2/music.ogg');
+    //music.play();
+    //new Audio('./sound/game2/music.ogg').play();
 }
 function createArea() {
     canvas = document.getElementById('tutorial');
@@ -71,39 +80,58 @@ function createArea() {
     ctx = canvas.getContext('2d')
     initSound();
     initModal();
-    startTimer();
     createBomb();
-    slideBar();
-    drawBoard();
-    runGame();
+    showStart();
+
+}
+
+function getScore(){
+    return Math.max(0,Math.round(timer/53.00*3000*numFail));
 }
 
 function initModal() {
     myModal = document.getElementById('myModal')
     closeBtn = document.getElementById('closeBtn')
+    textBtn = document.getElementById('textBtn')
 }
 
 function showModal() {
+    alert(getScore())
     textOut = document.getElementById('modalText')
-    if(endGame == 1){
+    if (endGame == 1) {
         textOut.innerHTML = "ยินดีด้วย คุณได้ไปด่านต่อไป";
-        closeBtn.value = "เล่นต่อ";
+        textBtn.innerHTML = "เล่นต่อ";
         closeBtn.onclick = function () {
             location.href = "./game3.html";
         };
-    }else if(endGame == -1){
+    } else if (endGame == -1) {
         textOut.innerHTML = "เสียใจด้วย เวลาหมดแล้ว";
-        closeBtn.value = "เริ่มใหม่";
+        textBtn.innerHTML = "เริ่มใหม่";
         closeBtn.onclick = function () {
             location.href = "./game1.html";
         };
 
-    }else{
+    } else {
         textOut.innerHTML = "เสียใจด้วย ระเบิดทำงานแล้ว ลองใหม่นะ";
-        closeBtn.value = "เริ่มใหม่";
+        textBtn.innerHTML = "เริ่มใหม่";
         closeBtn.onclick = function () {
             location.href = "./game1.html";
         };
+    }
+    myModal.style.display = "block";
+}
+
+function showStart() {
+    textOut = document.getElementById('modalText')
+
+    textOut.innerHTML = "สวัสดี  "
+    document.getElementById('modalSub').innerHTML = "วิธีเล่น:กดตัวเลขเพื่อตอบโจทย์ที่กำหนดภายใน 1 นาที และให้ทันเวลาระเบิด";
+    textBtn.innerHTML = "  เริ่มเกม  ";
+    closeBtn.onclick = function () {
+        myModal.style.display = "none";
+        startGame();
+        document.getElementById('modalSub').innerHTML =  ""
+
     }
     myModal.style.display = "block";
 }
@@ -114,14 +142,15 @@ function checkAnswer(num) {
         point = 100
         correctSound.play();
 
-    }else{
+    } else {
         wrongSound.play();
+        numFail-=0.01
     }
 
 }
 
 function drawBoard() {
-    ctx.fillStyle = "#008000"
+    ctx.fillStyle = "#7F7F7F"
     ctx.fillRect(500, 200, 600, 130);
 }
 
@@ -147,7 +176,7 @@ function runGame() {
     }
     console.log(anwser)
     ctx.font = 'bold 110px sans-serif';
-    ctx.fillStyle = "#FF1493"
+    ctx.fillStyle = "#D72121"
     ctx.fillText(textOut, 540, 300)
     temp = ctx
 }
@@ -208,18 +237,13 @@ function createBomb() {
         ctx.drawImage(img, (canvas.width - img.width) / 2, 400)
 
     }
-    ctx.moveTo(canvas.width / 2, 0)
-    ctx.lineTo(canvas.width / 2, canvas.height)
-    ctx.fillStyle = "#FF0000";
-    ctx.moveTo(0, 0);
-    ctx.lineTo(canvas.width, canvas.height)
     ctx.stroke();
 
 }
 function startTimer() {
     slide = setInterval(loadSlidebar, 50)
     clock = setInterval(updateTimer, 1000)
-    
+
 }
 
 function stopTimer() {
@@ -232,9 +256,9 @@ function stopTimer() {
     }
     else {
         loseSound.play();
-        if(timer < 0){
+        if (timer < 0) {
             endGame = -1;
-        }else{
+        } else {
             endGame = -2;
         }
     }
