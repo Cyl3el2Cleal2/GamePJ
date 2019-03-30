@@ -12,6 +12,10 @@ var yW =0;
 var score;
 var name ;
 var data ;
+var correctSound;
+var music;
+var loseSound;
+
 function CreateScene() {
     name = location.search.substring(1)
     data = name.split("%20")
@@ -27,13 +31,19 @@ function CreateScene() {
     document.getElementById("Modal").style.display = "none";
     custom();
     MathTitle();
-    playSound();
+    initSound();
    
 
 }
-
+function initSound() {
+    correctSound = new Audio('./sound/game3/sound.wav');
+    loseSound = new Audio('./sound/game2/boom.wav');
+    music = new Audio('./sound/game2/wrong.wav');
+    correctSound.play();
+}
 
 function custom() {
+
     var image = ["./img/customGame3/1.png", "./img/customGame3/b1.png", "./img/customGame3/2.png", "./img/customGame3/b2.png"
         , "./img/customGame3/3.png", "./img/customGame3/b3.png", "./img/customGame3/4.png", "./img/customGame3/b4.png",
         "./img/customGame3/5.png"
@@ -155,6 +165,7 @@ function GameOver() {
     var ar2 = 1563;   //532
     console.log("Width =" + Math.floor(width))
     if (Math.floor(width) > 0 && Math.floor(width) < 532 && wx == 532) {
+        
         win();
     } else if (Math.floor(width) > 532 && Math.floor(width) < 1031 && wx == 499) {
         win();
@@ -184,6 +195,7 @@ function bomb(width) {
     imgBomb.onload = function () {
         ctx.drawImage(imgBomb, width, canvas.height * (4 / 5) - 150, 400, 400)
     }
+    loseSound.play();
     document.onkeydown = function (e) {
         return false;
     }
@@ -214,13 +226,7 @@ function nextPage() {
     }
 }
 
-function playSound() {
-    var sound = new Audio('./img/customGame3/sound2.ogg')
-    
 
-    sound.play();
-   
-}
 
 function startTimer() {
     clock = setInterval(updateTimer, 1000)
@@ -229,7 +235,9 @@ function stopTimer() {
     clearInterval(clock)
 }
 function updateTimer() {
+   
     if (timer == 0) {
+       
         stopTimer()
         GameOver();
         return;
@@ -238,7 +246,9 @@ function updateTimer() {
     document.getElementById('bdTime').innerHTML = "Time : " + timer;
     
     if (timer < 10) {
+
         if (timer % 2 == 0) {
+            music.play()
             document.getElementById('bdTime').style.color = "red";
         } else {
 
