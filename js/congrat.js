@@ -12,7 +12,9 @@ function congrat() {
     canvas.style.border = "3px solid";
     ctx = canvas.getContext('2d')
     ctx.moveTo(0, 0);
+    document.getElementById('score').innerHTML = "Score " + data[1]
 }
 function nextPage() {
-    window.location.href = "game3.html?" + data[0] + " " + data[1]
+
+   window.location.href = "home.html"
 }
