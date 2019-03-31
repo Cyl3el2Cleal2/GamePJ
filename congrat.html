@@ -1,13 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Congratulations</title>
     <script src="./js/congrat.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
 </head>
-<body onload="Scene()">
-    
+
+<body onload="congrat()">
+    <embed name="GoodEnough" src="sound/game2/music.mp3" loop="false" hidden="true" autostart="true">
+    <div class="gameAreaCon">
+        <div id="Modal" class="ModelCon">
+            <p id="GO">Congratulations</p>
+            <a onclick="nextPage()" class="button3" id="PA">PLAY AGIAN</a>
+        </div>
+
+        <!-- <button onclick="nextPage()" id="close-image"><img src="./img/customGame3/pStart.gif"></button> -->
+
+        
+        <canvas id="scene"></canvas>
+
+    </div>
+  
 </body>
+
 </html>

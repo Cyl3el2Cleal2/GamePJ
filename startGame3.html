@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./js/startgame3.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body onload="startgame3()">
+    <embed name="GoodEnough" src="sound/game2/music.mp3" loop="false" hidden="true" autostart="true">
+    <div class="gameArea3">
+       
+        
+        <div id="Modal" class="model4">
+            <p >คำแนะนำ : ตอบคำถาม โจยท์คณิตศาสตร์ บวก ลบ คูณ หาร ให้ถุกต้อง เพื่อผ่านด่านทดสอบ</p>
+            <p >วิธีเล่น ข้อ 1: บังคับตัวละคร ไปยังช่องของ คำตอบ ที่ถูกทึี่สุด เพื่อหลบ ระเบิด ในเวลาที่กำหนด</p>
+            <p >วิธีเล่น ข้อ 2: บังคับตัวละคร โดยกดปุ่ม <-  และ -> เพื่อเคลื่อนที่ ซ้าย ขวา </p>
+            <p >วิธีเล่น ข้อ 3: ถ้าตอบผิด จะโดนระเบิด และกลับมาจุดเริ่มต้นใหม่ ถ้าตอบถูกครบ 5ข้อ จะได้รับคะแนน 50 คะแนนเต็ม</p>
+            <button onclick="nextPage()" id="close-image" ><img  src="./img/customGame3/pStart.gif"></button>
+       
+        </div>
+        <canvas id="scene"></canvas>
+
+    </div>
+  
+</body>
+</html>
