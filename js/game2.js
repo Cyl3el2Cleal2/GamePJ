@@ -115,7 +115,7 @@ function showModal() {
         textOut.innerHTML = "ยินดีด้วย "+userName+" คุณได้ไปด่านต่อไป";
         textBtn.innerHTML = "เล่นต่อ";
         closeBtn.onclick = function () {
-            location.href = "./startgame3.html?"+userName+" "+(getScore()+score);
+            location.href = "./startGame3.html?"+userName+" "+(getScore()+score);
         };
     } else if (endGame == -1) {
         textOut.innerHTML = "เสียใจด้วย เวลาหมดแล้ว";
