@@ -18,7 +18,9 @@ function congrat() {
     ctx = canvas.getContext('2d')
     ctx.moveTo(0, 0);
     document.getElementById('score').innerHTML = "Score " + data[1]
-    runStar();
+    
+    window.setTimeout(runStar(),800);
+    // runStar();
 }
 function nextPage() {
 
@@ -27,7 +29,7 @@ function nextPage() {
 
 function addStar() {
     temp-=1000;
-    if (temp < 1000 || temp == Nan) {
+    if (temp < 1000 || temp == NaN) {
         clearTimeout(process)
     }
     sound.play();
