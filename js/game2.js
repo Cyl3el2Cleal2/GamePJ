@@ -54,6 +54,17 @@ function check(e) {
     }
 }
 
+function processUser()
+  {
+    var parameters = location.search.substring(1).split("&");
+
+    var tempTxt = parameters[0].split("%20");
+    console.log(tempTxt)
+    userName = tempTxt[0]
+    score = parseInt(tempTxt[1])
+
+  }
+
 function startGame() {
     slideBar();
     drawBoard();
@@ -91,6 +102,7 @@ function getScore(){
 }
 
 function initModal() {
+    processUser();
     myModal = document.getElementById('myModal')
     closeBtn = document.getElementById('closeBtn')
     textBtn = document.getElementById('textBtn')
@@ -100,10 +112,10 @@ function showModal() {
     // alert(getScore())
     textOut = document.getElementById('modalText')
     if (endGame == 1) {
-        textOut.innerHTML = "ยินดีด้วย คุณได้ไปด่านต่อไป";
+        textOut.innerHTML = "ยินดีด้วย "+userName+" คุณได้ไปด่านต่อไป";
         textBtn.innerHTML = "เล่นต่อ";
         closeBtn.onclick = function () {
-            location.href = "./game3.html?"+userName+(getScore()+score);
+            location.href = "./game3.html?"+userName+" "+(getScore()+score);
         };
     } else if (endGame == -1) {
         textOut.innerHTML = "เสียใจด้วย เวลาหมดแล้ว";
@@ -125,7 +137,7 @@ function showModal() {
 function showStart() {
     textOut = document.getElementById('modalText')
 
-    textOut.innerHTML = "สวัสดี  "
+    textOut.innerHTML = "สวัสดี "+userName
     document.getElementById('modalSub').innerHTML = "วิธีเล่น:กดตัวเลขเพื่อตอบโจทย์ที่กำหนดภายใน 1 นาที และให้ทันเวลาระเบิด";
     textBtn.innerHTML = "  เริ่มเกม  ";
     closeBtn.onclick = function () {
