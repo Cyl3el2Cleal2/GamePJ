@@ -27,7 +27,7 @@ function nextPage() {
 
 function addStar() {
     temp-=1000;
-    if (temp < 1000) {
+    if (temp < 1000 || temp == Nan) {
         clearTimeout(process)
     }
     sound.play();
