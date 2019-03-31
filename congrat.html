@@ -8,25 +8,41 @@
     <title>Congratulations</title>
     <script src="./js/congrat.js"></script>
     <link rel="stylesheet" type="text/css" href="style.css">
+    <style>
+        img{
+            display: inline;
+            height: 90px;
+            width: auto
+            
+        }
+
+    </style>
 </head>
 
 <body onload="congrat()">
     <embed name="GoodEnough" src="sound/game2/music.mp3" loop="false" hidden="true" autostart="true">
     <div class="gameAreaCon">
-            
+
         <div id="Modal" class="ModelCon">
-             <p id="score"> 300</p>
+            <h1 id="user"></h1>
+            <p id="score"> 300</p>
             <p id="GO">Congratulations</p>
+            <div style="display: inline;" id="holdStar">
+
+            </div>
+            <br>
             <a onclick="nextPage()" class="button3" id="PA">PLAY AGIAN</a>
         </div>
 
         <!-- <button onclick="nextPage()" id="close-image"><img src="./img/customGame3/pStart.gif"></button> -->
 
-        
-        <canvas id="scene"></canvas>
+
+        <canvas id="scene">
+
+        </canvas>
 
     </div>
-  
+
 </body>
 
 </html>
