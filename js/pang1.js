@@ -8,7 +8,7 @@ var count = 0
 var score = 0;
 console.log(qa[0]);
 function createArea() {
-    // playSoundBG();
+    playSoundBG();
     startTimer();
     init();
 
@@ -104,6 +104,7 @@ function changeSol1(id) {
     var ans = document.getElementById('t1').innerHTML
     console.log(ans);
     checkAns(ans);
+    new Audio('./sound/TARMA.mp3').play()
     var sol1 = document.getElementById('anime01').src = "./img/sol2.gif";
     document.getElementById("t1").style.backgroundColor = "red";
     console.log('before');
@@ -120,6 +121,8 @@ function changeSol2(id) {
     var ans = document.getElementById('t2').innerHTML
     console.log(ans);
     checkAns(ans);
+    new Audio('./sound/TARMA.mp3').play()
+
     var sol1 = document.getElementById('anime02').src = "./img/sol2.gif";
     document.getElementById("t2").style.backgroundColor = "red";
     console.log('before');
@@ -136,6 +139,8 @@ function changeSol3(id) {
     var ans = document.getElementById('t3').innerHTML
     console.log(ans);
     checkAns(ans);
+    new Audio('./sound/TARMA.mp3').play()
+
     var sol1 = document.getElementById('anime03').src = "./img/sol2.gif";
     document.getElementById("t3").style.backgroundColor = "red";
     console.log('before');
@@ -152,6 +157,8 @@ function changeSol4(id) {
     var ans = document.getElementById('t4').innerHTML
     console.log(ans);
     checkAns(ans);
+    new Audio('./sound/TARMA.mp3').play()
+
     var sol1 = document.getElementById('anime04').src = "./img/sol2.gif";
     document.getElementById("t4").style.backgroundColor = "red";
     console.log('before');
@@ -168,6 +175,8 @@ function changeSol5(id) {
     var ans = document.getElementById('t5').innerHTML
     console.log("this is my ans "+ans);
     checkAns(ans);
+    new Audio('./sound/TARMA.mp3').play()
+
     var sol1 = document.getElementById('anime05').src = "./img/sol2.gif";
     document.getElementById("t5").style.backgroundColor = "red";
     console.log('before');
