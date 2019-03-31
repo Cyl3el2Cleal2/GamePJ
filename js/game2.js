@@ -15,6 +15,7 @@ var endGame = 0;
 var closeBtn;
 var myModal;
 var userName;
+var score = 0;
 var correctSound;
 var wrongSound;
 var loseSound;
@@ -86,7 +87,7 @@ function createArea() {
 }
 
 function getScore(){
-    return Math.max(0,Math.round(timer/53.00*3000*numFail));
+    return Math.max(0,Math.round((timer/53.00)*3000*numFail*current/900));
 }
 
 function initModal() {
@@ -96,26 +97,26 @@ function initModal() {
 }
 
 function showModal() {
-    alert(getScore())
+    // alert(getScore())
     textOut = document.getElementById('modalText')
     if (endGame == 1) {
         textOut.innerHTML = "ยินดีด้วย คุณได้ไปด่านต่อไป";
         textBtn.innerHTML = "เล่นต่อ";
         closeBtn.onclick = function () {
-            location.href = "./game3.html";
+            location.href = "./game3.html?"+userName+(getScore()+score);
         };
     } else if (endGame == -1) {
         textOut.innerHTML = "เสียใจด้วย เวลาหมดแล้ว";
         textBtn.innerHTML = "เริ่มใหม่";
         closeBtn.onclick = function () {
-            location.href = "./game1.html";
+            location.href = "./game1.html?"+userName;
         };
 
     } else {
         textOut.innerHTML = "เสียใจด้วย ระเบิดทำงานแล้ว ลองใหม่นะ";
         textBtn.innerHTML = "เริ่มใหม่";
         closeBtn.onclick = function () {
-            location.href = "./game1.html";
+            location.href = "./game1.html?"+userName;
         };
     }
     myModal.style.display = "block";
