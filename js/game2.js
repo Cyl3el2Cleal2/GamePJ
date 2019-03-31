@@ -115,20 +115,20 @@ function showModal() {
         textOut.innerHTML = "ยินดีด้วย "+userName+" คุณได้ไปด่านต่อไป";
         textBtn.innerHTML = "เล่นต่อ";
         closeBtn.onclick = function () {
-            location.href = "./game3.html?"+userName+" "+(getScore()+score);
+            location.href = "./startgame3.html?"+userName+" "+(getScore()+score);
         };
     } else if (endGame == -1) {
         textOut.innerHTML = "เสียใจด้วย เวลาหมดแล้ว";
         textBtn.innerHTML = "เริ่มใหม่";
         closeBtn.onclick = function () {
-            location.href = "./game1.html?"+userName;
+            location.href = "./game2.html?"+userName+" "+score;
         };
 
     } else {
         textOut.innerHTML = "เสียใจด้วย ระเบิดทำงานแล้ว ลองใหม่นะ";
         textBtn.innerHTML = "เริ่มใหม่";
         closeBtn.onclick = function () {
-            location.href = "./game1.html?"+userName;
+            location.href = "./game2.html?"+userName+" "+score;
         };
     }
     myModal.style.display = "block";
