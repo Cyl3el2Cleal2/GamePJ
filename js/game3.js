@@ -106,7 +106,7 @@ function custom() {
 
 function MathTitle() {
 
-    var opUsing = ["(2*3)+" + Math.floor(Math.random() * 100) + "+(10/2)", "(20/5)+(2*11)-" + Math.floor(Math.random() * 100) + "", "" + Math.floor(Math.random() * 100) + "+2-(4*8)*2", "(4/2)-(8-" + Math.floor(Math.random() * 100) + ")+35", "" + Math.floor(Math.random() * 100) + "-(((2*8)/3)+9)"];
+    var opUsing = ["(2*3)+" + Math.floor(Math.random() * 100) + "+(10/2)", "(20/5)+(2*11)-" + Math.floor(Math.random() * 100) + "", "" + Math.floor(Math.random() * 100) + "+2-(4*8)*2", "(4/2)-(8-" + Math.floor(Math.random() * 100) + ")+35", "" + Math.floor(Math.random() * 100) + "-(((2*8)*2)+9)"];
     var q = location.search.substring(1);
     var nums = q.split("%20")
     var query = parseInt(nums[2], 10);
