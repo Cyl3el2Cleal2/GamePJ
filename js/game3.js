@@ -255,7 +255,7 @@ function nextPage() {
         }
 
     } else {
-        window.location.href = "game3.html?" + data[0] + " " + data[1]
+        window.location.href = "game3.html?" + data[0] +" " +data[1]
     }
 }
 
