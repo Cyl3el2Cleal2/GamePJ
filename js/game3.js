@@ -248,7 +248,7 @@ function nextPage() {
             document.getElementById("PA").style.backgroundColor = "rgb(105,105,105)";
             document.getElementById("Modal").style.backgroundColor = "rgb(0,0,0)";
             var so = parseInt(data[1])
-            so = so + 50
+            so = so + 5000
             window.location.href = "congrat.html?" + data[0] + " " + so
         } else {
             window.location.href = "game3.html?" + data[0] + " " + data[1] + " " + indexofMath

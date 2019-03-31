@@ -1,0 +1,49 @@
+.body{
+    background-color: green;
+}
+#main {
+    width: 1600px;
+    height: 900px;
+    margin: 0 auto;
+    background-image: url(./img/bg5.gif);
+    background-repeat: no-repeat;
+    background-size: 1600px 900px;
+}
+
+#box {
+    padding-top: 200px;
+    text-align: center;
+}
+
+h1 {
+   
+    font-size: 100px;
+    background: url("./img/tt3.gif") no-repeat center center;
+    background-size:100%;
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+}
+
+input {
+
+    background: transparent;
+    width: 600px;
+    font-size: 70px;
+    border: 15px solid transparent;
+    padding: 15px;
+    border-image: url(./img/dot3.gif) 33% round;
+text-align: center;
+   color: white;
+}
+
+button {
+
+    background-image: url(./img/tt3.gif);
+    margin-top: 40px;
+    font-size: 60px;
+    width: 200px;
+    height: auto;
+    border-radius: 40%;
+    color: white;
+}
