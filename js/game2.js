@@ -121,14 +121,14 @@ function showModal() {
         textOut.innerHTML = "เสียใจด้วย เวลาหมดแล้ว";
         textBtn.innerHTML = "เริ่มใหม่";
         closeBtn.onclick = function () {
-            location.href = "./game1.html?"+userName;
+            location.href = "./game2.html?"+userName+" "+score;
         };
 
     } else {
         textOut.innerHTML = "เสียใจด้วย ระเบิดทำงานแล้ว ลองใหม่นะ";
         textBtn.innerHTML = "เริ่มใหม่";
         closeBtn.onclick = function () {
-            location.href = "./game1.html?"+userName;
+            location.href = "./game2.html?"+userName+" "+score;
         };
     }
     myModal.style.display = "block";
