@@ -10,6 +10,7 @@
     padding-top: 56.25%;
     /* 16:9 Aspect Ratio */
     max-width: 85%;
+    
 
 }
 
@@ -189,14 +190,29 @@ border-radius: 50%;
     top: 200px;
     height: 139px;
     left: 0px;
-    background-color: rgba(192, 26, 26, 0.692);
+    background-color:  rgb(0, 0, 0);
+    padding: 16px;
+    width: 1570px;
+    position: absolute;
+
+}
+.model4{
+    color: white;
+    
+    text-align: center;
+    font-size: 30px;
+    position: absolute;
+    top: 200px;
+    height: 370px;
+    left: 0px;
+    background-color:  rgb(0, 0, 0);
     padding: 16px;
     width: 1570px;
     position: absolute;
 
 }
 .button3{
-    background-color: #4CAF50;
+    background-color: rgb(51, 51, 49);
     border: none;
     color: white;
     padding: 15px 32px;
@@ -207,4 +223,34 @@ border-radius: 50%;
     margin: 4px 2px;
     cursor: pointer;
 }
-
+#close-image{
+    padding: 0em;
+    border: none;
+}
+#close-image img {
+    display: block;
+    border: none;
+    height: 60px;  
+    width: 200px;
+}
+.gameAreaCon{
+    position:relative;
+    width: 1600px;
+    margin: 0px auto;
+    background-image: url("./img/customGame3/cong.gif");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 1600px 900px;
+}
+.ModelCon{
+    color: white;
+    text-align: center;
+    font-size: 30px;
+    position: absolute;
+    top: 200px;
+    height: 370px;
+    left: 0px;
+    padding: 16px;
+    width: 1570px;
+    position: absolute;
+}
