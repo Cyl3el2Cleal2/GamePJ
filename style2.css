@@ -81,8 +81,8 @@
     position:relative;
     width: 1600px;
     height: 900px;
-    margin: 0px auto;
-    margin-left: 4em;
+    left: 50%;
+transform: translateX(-50%);
 }
 body {
     background-color: green;
