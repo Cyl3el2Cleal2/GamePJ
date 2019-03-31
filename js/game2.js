@@ -27,8 +27,8 @@ window.addEventListener('keydown', this.check, false);
 
 function check(e) {
     //console.log(e.keyCode)
-    if (parseInt(e.keyCode) >= 48 && parseInt(e.keyCode) <= 57) {
-        number = e.keyCode - 48;
+    if (parseInt(e.keyCode) >= 48 && parseInt(e.keyCode) <= 57 || (e.keyCode >=96 && e.keyCode <= 105)) {
+        number = e.keyCode<= 57 ? e.keyCode - 48:e.keyCode - 96;
         // console.log(anwser);
         if (anwser > 9) {
 
