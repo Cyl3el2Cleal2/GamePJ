@@ -7,6 +7,7 @@ var qaKey = ["7,14,2,42,5", "12,15,4,9,10", "7,21,14,9,0", "-3,5,-7,-4,1","0,-15
 var count = 0
 var score = 0;
 console.log(qa[0]);
+
 function createArea() {
     playSoundBG();
     startTimer();
@@ -53,10 +54,11 @@ function updateTimer() {
     if (score == 4000){
         stopTimer();
         console.log('before');
-       
+        var q = location.search.substring(1);
+        console.log(q)
         new Audio('./sound/missionCom.mp3').play()
         setTimeout(function () {
-            window.location.href = ('game2.html');
+            window.location.href = ('game2.html?'+q+" "+score);
             console.log('after');
         }, 6000);
     }

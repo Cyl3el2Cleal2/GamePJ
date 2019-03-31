@@ -31,10 +31,12 @@ function gogo(){
     
    
     sound.play();
-
+    
+        
+    var q = location.search.substring(1);
+    console.log(q)
     setTimeout(function () {
-   
-        window.location.href = ('pang1.html');
+        window.location.href = ('pang1.html?'+q);
         console.log('after');
     }, 3500);
    
