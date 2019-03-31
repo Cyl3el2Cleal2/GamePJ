@@ -20,7 +20,7 @@ function gogo(){
 
     setTimeout(function () {
    
-        window.location.href = ('game1Index.html');
+        window.location.href = ('name.html');
         console.log('after');
     }, 1000);
    

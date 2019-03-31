@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Enter Name</title>
+    <style>
+        #main {
+            width: 1600px;
+            height: 900px;
+            margin: 0 auto;
+            background-color: gray;
+        }
+
+        #box {
+            padding-top: 200px;
+            text-align: center;
+        }
+
+        h1 {
+
+            font-size: 100px;
+        }
+
+        input {
+            width: 600px;
+            font-size: 70px;
+        }
+
+        button {
+            margin-top: 40px;
+            font-size: 60px;
+            width: 200px;
+            height: auto;
+            border-radius: 50%;
+
+        }
+    </style>
+    <script>
+
+        function next() {
+            var name = document.getElementById('txt').value;
+            name = name.split(' ').join('')
+            window.location.href = './game1Index.html?' + name;
+        }
+    </script>
+</head>
+
+<body>
+    <div id="main">
+        <div id="box">
+            <h1>
+                Name..
+            </h1>
+            <input id="txt">
+            <br>
+
+            <button onclick="next()">
+                Next
+            </button>
+        </div>
+    </div>
+
+</body>
+
+</html>
