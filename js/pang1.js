@@ -1,8 +1,8 @@
 
 var timer = 10;
-var qa = ["5 + 3 - 1 = ?", "6 + 8 - 2 = ?","7 + 7 - 7 = ?","mission completed"];
+var qa = ["5 + 3 - 1 = ?", "6 + 8 - 2 = ?","7 + 7 - 7 = ?","8 - 4 - 7 = ?","1 + 14 - 15 = ?","mission completed"];
 var textQa;
-var qaKey = ["7,14,2,42,5", "12,15,4,9,10", "7,21,14,9,0","0,0,0,0,0"]
+var qaKey = ["7,14,2,42,5", "12,15,4,9,10", "7,21,14,9,0", "-3,5,-7,-4,1","0,-15,-5,5,15","0,0,0,0,0"]
 
 var count = 0
 var score = 0;
@@ -50,14 +50,23 @@ function stopTimer() {
 }
 
 function updateTimer() {
+    if (score == 4000){
+        stopTimer();
+        console.log('before');
+       
+        new Audio('./sound/missionCom.mp3').play()
+        setTimeout(function () {
+            window.location.href = ('game2.html');
+            console.log('after');
+        }, 6000);
+    }
     if (timer == 0) {
         stopTimer()
         console.log('before');
-        
+        alert("Game Over")
     
         setTimeout(function () {
-       
-            window.location.href=window.location.href
+            window.location.href=window.location.href;
             console.log('after');
         }, 1000);
         return;
@@ -188,19 +197,20 @@ function checkAns(ans) {
     console.log("QAkey =" + qaKey[count])
     var key = qaKey[count].split(",")
     if (ans == key[0]) {
-        score += 1000;
+        timer = 10;
+        score +=800;
         console.log("score"+score)
 
     } else {
         console.log("false")
         console.log('before');
         
-    
+        alert("Game Over")
         setTimeout(function () {
        
             window.location.href=window.location.href
             console.log('after');
-        }, 1000);
+        }, 500);
         
     }
 
