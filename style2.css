@@ -1,0 +1,197 @@
+/* เอาโค้ด .login ไป ใส่ของตัวเอง เปลี่ยน bg เอา*/
+.login {
+    background-image: url(./img/bg2.gif);
+    /*เปลี่ยน bg*/
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    object-fit: contain;
+    position: relative;
+    width: 100%;
+    padding-top: 56.25%;
+    /* 16:9 Aspect Ratio */
+    max-width: 85%;
+
+}
+
+.frame {
+    max-height: 80%;
+    padding-left: 15%;
+    /* background-color: black; */
+}
+
+#bdTime {
+    border: 15px solid transparent;
+    padding: 15px;
+    border-image: url(./img/bdTime1.gif) 33% round;
+}
+
+.timeleft {
+    color: white;
+    text-align: right;
+    position: absolute;
+    top: 8px;
+    right: 16px;
+}
+
+/*******************************/
+
+.pang1 {
+    background-image: url(./img/bg1.gif);
+    background-repeat: no-repeat;
+    background-size: 1600px 900px;
+    object-fit: contain;
+    display: inline-block;
+    width: 1600px;
+    /* 16:9 Aspect Ratio */
+    max-width: 1600px;
+    position: absolute;
+    /* position: relative; */
+    cursor: crosshair;
+   
+}
+.home {
+    background-image: url(./img/bg2.gif);
+    background-repeat: no-repeat;
+    background-size: 1600px 900px;
+    object-fit: contain;
+    display: inline-block;
+    width: 1600px;
+    /* 16:9 Aspect Ratio */
+    max-width: 1600px;
+    position: absolute;
+    /* position: relative; */
+    cursor: crosshair;
+   
+}
+.home2 {
+    background-image: url(./img/bg3.gif);
+    background-repeat: no-repeat;
+    background-size: 1600px 900px;
+    object-fit: contain;
+    display: inline-block;
+    width: 1600px;
+    /* 16:9 Aspect Ratio */
+    max-width: 1600px;
+    position: absolute;
+    /* position: relative; */
+    cursor: crosshair;
+   
+}
+#gameArea{
+    position:relative;
+    width: 1600px;
+    height: 900px;
+    margin: 0px auto;
+    margin-left: 4em;
+}
+body {
+    background-color: green;
+}
+
+.character{
+    position: absolute;
+    display:inline-block;
+}
+.avatar {
+    /* display: block;
+    position: absolute; */
+    /* bottom: 200px;
+    width: 150px;
+    height: 150px;
+    margin-top: 300px;
+    padding-top: 100px; */
+     /* margin-left: 100px;  */
+
+   } 
+.pang1 p{
+     text-align: center;
+     font-size: 55px;
+     /* color: aliceblue; */
+     
+     /* margin-left: 5px; */
+     /* margin-bottom:80px; */
+     /* border: 5px solid red; */
+     /* padding-bottom: 40px; */
+     background-color: transparent;
+     
+     
+}
+.cal{
+text-align: center;
+font-size: 3em;
+width: 50%;
+position: absolute;
+border: 10px solid transparent;
+padding: 15px;
+border-image: url(./img/dot3.gif) 25% round;
+top: 1em;
+left: 20%;
+}
+#cal{
+    background: url("./img/dot3.gif") no-repeat center center;
+    background-size:100%;
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+}
+.divSol{
+     /* border: 5px solid orchid; */
+    width: 250px;
+    height: 250px;
+    position: absolute;
+    display:inline;
+    bottom: 90px;
+    color: white;
+
+    
+}
+.startBut{
+    margin-top: 300px;
+    margin-left: 600px;
+   
+}
+.startBut2{
+    margin-top: 400px;
+    margin-left: 500px;
+   
+}
+.homeName{
+    margin-top: 200px;
+    margin-left: 400px;
+    position: absolute;
+    font-size: 150px;
+    text-align: center;
+    background: url("./img/tt3.gif") no-repeat center center;
+    background-size:100%;
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+}
+.home2input{
+    margin-top: 100px;
+    margin-left: 450px;
+    position: absolute;
+    font-size: 150px;
+    text-align: center;
+    background: url("./img/tt3.gif") no-repeat center center;
+    background-size:100%;
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+}
+.home2Text{
+    
+    margin-top: 300px;
+    margin-left: 250px;
+    position: absolute;
+    font-size: 25px;
+    text-align: justify;
+    background: url("./img/tt3.gif") no-repeat center center;
+    background-size:100%;
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: rgb(248, 91, 91);
+    ;
+}
+
